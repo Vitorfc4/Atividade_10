@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <title>{% block title %}Atividade 10{% endblock %}</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    header { margin-bottom: 20px; }
+    .flash { padding: 8px; border-radius: 4px; margin-bottom: 8px; }
+    .flash.success { background: #d4edda; }
+    .flash.error { background: #f8d7da; }
+    table { border-collapse: collapse; width: 100%; margin-top: 10px; }
+    th, td { border: 1px solid #ccc; padding: 8px; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="{{ url_for('users_new_form') }}">Novo usuário</a> |
+    <a href="{{ url_for('users_page') }}">Lista de usuários</a>
+  </header>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="flash {{ category }}">{{ message }}</div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+
+  {% block content %}{% endblock %}
+</body>
+</html>

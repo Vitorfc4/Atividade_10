@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Editar Usuário{% endblock %}
+{% block content %}
+  <h2>Editar Usuário #{{ u.id }}</h2>
+  <form method="post" action="{{ url_for('users_edit_post', user_id=u.id) }}">
+    <div>
+      <label>Nome</label><br>
+      <input type="text" name="nome" value="{{ u.nome }}" required minlength="2" maxlength="120">
+    </div>
+    <div>
+      <label>Email</label><br>
+      <input type="email" name="email" value="{{ u.email }}" required maxlength="120">
+    </div>
+    <div>
+      <label>Nova senha (opcional)</label><br>
+      <input type="password" name="senha" minlength="4" maxlength="128" placeholder="deixe em branco para manter">
+    </div>
+    <div style="margin-top:10px;">
+      <button type="submit">Salvar</button>
+      <a href="{{ url_for('users_page') }}">Cancelar</a>
+    </div>
+  </form>
+{% endblock %}

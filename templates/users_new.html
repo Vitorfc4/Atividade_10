@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Novo Usuário{% endblock %}
+{% block content %}
+  <h2>Cadastrar Usuário</h2>
+  <form method="post" action="{{ url_for('users_create_from_form') }}">
+    <div>
+      <label>Nome</label><br>
+      <input type="text" name="nome" required>
+    </div>
+    <div>
+      <label>Email</label><br>
+      <input type="email" name="email" required>
+    </div>
+    <div>
+      <label>Senha</label><br>
+      <input type="password" name="senha" required>
+    </div>
+    <div style="margin-top:10px;">
+      <button type="submit">Cadastrar</button>
+      <a href="{{ url_for('users_page') }}">Cancelar</a>
+    </div>
+  </form>
+{% endblock %}
